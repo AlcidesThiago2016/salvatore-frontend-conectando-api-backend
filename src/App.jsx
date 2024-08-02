@@ -3,7 +3,7 @@ import Card from './components/Card/Card'
 
 function App() {
 
-  const java = {
+  /* const java = {
     nome: 'Java',
     imagem: 'https://salvatore.academy/devmon/1_java.png',
     evoluiPara: 'Kotlin'
@@ -34,6 +34,22 @@ function App() {
 
 
   const devmons = [java, kotlin, android, c, cplusplus]
+  */
+
+  const devmons = []
+
+  async function fetchData(){
+
+    const apiUrl = 'https://salvatore-backend-integrando-front-end.onrender.com/personagem'
+
+    const response = await fetch(apiUrl)
+
+    const data = await response.json()
+
+    console.log(45, data)
+  }
+
+  fetchData()
 
   return (
     <>
