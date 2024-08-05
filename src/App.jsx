@@ -1,42 +1,10 @@
+import { useEffect, useState } from 'react'
 import './App.css'
 import Card from './components/Card/Card'
 
 function App() {
 
-  /* const java = {
-    nome: 'Java',
-    imagem: 'https://salvatore.academy/devmon/1_java.png',
-    evoluiPara: 'Kotlin'
-  }
-
-  const kotlin = {
-    nome: 'Kotlin',
-    imagem: 'https://salvatore.academy/devmon/2_kotlin.png',
-    evoluiPara: 'Android'
-  }
-
-  const android = {
-    nome: 'Android',
-    imagem: 'https://salvatore.academy/devmon/3_android.png'
-  }
-
-  const c = {
-    nome: 'C',
-    imagem: 'https://salvatore.academy/devmon/4_c.png',
-    evoluiPara: 'C++'
-  }
-
-  const cplusplus = {
-    nome: 'C++',
-    imagem: 'https://salvatore.academy/devmon/5_cpp.png',
-    evoluiPara: 'C#'
-  }
-
-
-  const devmons = [java, kotlin, android, c, cplusplus]
-  */
-
-  const devmons = []
+  const [devmons, setDevmons] = useState([])
 
   async function fetchData(){
 
@@ -46,10 +14,13 @@ function App() {
 
     const data = await response.json()
 
-    console.log(45, data)
+    setDevmons(data)
+    
   }
 
-  fetchData()
+  useEffect(function (){
+    fetchData()
+  }, [])
 
   return (
     <>
