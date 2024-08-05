@@ -3,6 +3,7 @@ import './App.css'
 import Card from './components/Card/Card'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Api } from './Api/api'
 
 function App() {
 
@@ -10,13 +11,9 @@ function App() {
 
   async function fetchData(){
 
-    const apiUrl = 'https://salvatore-backend-integrando-front-end.onrender.com/personagem'
+    const apiUrl = Api.personagem.readAll()
 
-    const response = await fetch(apiUrl).catch(function (error) {
-      console.error('Erro ao chamar endopoint /personagem', error)
-      toast.error('Error ao carregar a lista de Devmon.')
-    })
-
+    const response = await Api.buildApiGetRequest(apiUrl)
     if (response.ok){
       const data = await response.json()
 
